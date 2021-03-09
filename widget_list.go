@@ -24,6 +24,10 @@ func (w WidgetList) Render() (string, error) {
 func (w WidgetList) Update(out Output) ([]BoundEventHandler, error) {
 	handlers := []BoundEventHandler{}
 	for _, widget := range w {
+		if widget == nil {
+			continue
+		}
+
 		h, err := widget.Update(out)
 		if err != nil {
 			return nil, err
