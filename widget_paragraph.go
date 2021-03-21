@@ -20,6 +20,6 @@ func (b *ParagraphWidget) Render() (string, error) {
 	}.Render()
 }
 
-func (b *ParagraphWidget) Update(out Output) ([]BoundEventHandler, error) {
+func (b *ParagraphWidget) Update(e Event) ([]BoundEventHandler, error) {
 	return nil, nil
 }

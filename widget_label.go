@@ -19,6 +19,6 @@ func (b *LabelWidget) Render() (string, error) {
 	}.Render()
 }
 
-func (b *LabelWidget) Update(out Output) ([]BoundEventHandler, error) {
+func (b *LabelWidget) Update(e Event) ([]BoundEventHandler, error) {
 	return nil, nil
 }
