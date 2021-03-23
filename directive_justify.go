@@ -14,6 +14,6 @@ func (j Justify) Render() (string, error) {
 	return DirectiveCommand{"justify", string(j)}.Render()
 }
 
-func (j Justify) Update(out Output) ([]BoundEventHandler, error) {
+func (j Justify) Update(e Event) ([]BoundEventHandler, error) {
 	return nil, nil
 }

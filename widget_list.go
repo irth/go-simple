@@ -21,14 +21,14 @@ func (w WidgetList) Render() (string, error) {
 	return sb.String(), nil
 }
 
-func (w WidgetList) Update(out Output) ([]BoundEventHandler, error) {
+func (w WidgetList) Update(e Event) ([]BoundEventHandler, error) {
 	handlers := []BoundEventHandler{}
 	for _, widget := range w {
 		if widget == nil {
 			continue
 		}
 
-		h, err := widget.Update(out)
+		h, err := widget.Update(e)
 		if err != nil {
 			return nil, err
 		}

@@ -1,5 +1,7 @@
 package simple
 
+import "fmt"
+
 var _ Widget = &ButtonWidget{}
 
 type ClickHandler func(a *App, b *ButtonWidget) error
@@ -24,10 +26,13 @@ func (b *ButtonWidget) Render() (string, error) {
 	}.Render()
 }
 
-func (b *ButtonWidget) Update(out Output) ([]BoundEventHandler, error) {
-	if !out.Selected(b.ID) || b.OnClick == nil {
+func (b *ButtonWidget) Update(e Event) ([]BoundEventHandler, error) {
+	fmt.Println(e)
+	ie, ok := e.(SelectedEvent)
+	if !ok || b.OnClick == nil || ie.ID != b.ID {
 		return nil, nil
 	}
+
 	return []BoundEventHandler{
 		func(a *App) error {
 			return b.OnClick(a, b)

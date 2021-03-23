@@ -1,5 +1,7 @@
 package simple
 
+import "log"
+
 type SceneStack []Scene
 
 func (s *SceneStack) Push(scene Scene) {
@@ -22,5 +24,6 @@ func (s SceneStack) Replace(scene Scene) {
 }
 
 func (s SceneStack) Render() (Widget, error) {
+	log.Printf("scenestack: rendering %T", s.Current())
 	return s.Current().Render()
 }

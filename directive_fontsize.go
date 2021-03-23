@@ -10,6 +10,6 @@ func (f FontSize) Render() (string, error) {
 	return DirectiveCommand{"fontsize", strconv.Itoa(int(f))}.Render()
 }
 
-func (f FontSize) Update(out Output) ([]BoundEventHandler, error) {
+func (f FontSize) Update(e Event) ([]BoundEventHandler, error) {
 	return nil, nil
 }

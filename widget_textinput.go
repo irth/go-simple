@@ -24,15 +24,15 @@ func (t *TextInputWidget) Render() (string, error) {
 	}.Render()
 }
 
-func (t *TextInputWidget) Update(out Output) ([]BoundEventHandler, error) {
-	value, updated := out.Input(t.ID)
-	if !updated || t.OnUpdate == nil {
+func (t *TextInputWidget) Update(e Event) ([]BoundEventHandler, error) {
+	ie, ok := e.(InputEvent)
+	if !ok || t.OnUpdate == nil || ie.ID != t.ID {
 		return nil, nil
 	}
 
 	return []BoundEventHandler{
 		func(a *App) error {
-			return t.OnUpdate(a, t, value)
+			return t.OnUpdate(a, t, ie.Value)
 		},
 	}, nil
 }
